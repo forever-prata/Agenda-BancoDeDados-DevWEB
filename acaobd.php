@@ -8,6 +8,8 @@ $idade = isset($_POST["idade"])?$_POST["idade"]:"";
 $dataN = isset($_POST["nascimento"])?$_POST["nascimento"]:"";
 $parente = isset($_POST["parente"])?$_POST["parente"]:"";
 $localC = isset($_POST["local"])?$_POST["local"]:"";
+$passatempo = isset($_POST["passatempo"])?$_POST["passatempo"]:"";
+$cidade = isset($_POST["cidade"])?$_POST["cidade"]:"";
 $id = isset($_POST["id"])?$_POST["id"]:0;
 
 $acao = isset($_GET["acao"])?$_GET["acao"]:"";
@@ -38,9 +40,9 @@ if($nome != "" && $email != "" && $idade != ""){
         $conexao = new PDO(MYSQL_DSN,DB_USER,DB_PASSWORD);
 
         if($id > 0){
-            $query = "UPDATE contato SET nome = :nome, email = :email, idade = :idade , dataN = :dataN, parente = :parente, localC = :localC WHERE idcontato = :id";
+            $query = "UPDATE contato SET nome = :nome, email = :email, idade = :idade , dataN = :dataN, parente = :parente, localC = :localC, cidade = :cidade, passatempo = :passatempo WHERE idcontato = :id";
         }else{
-            $query = "INSERT INTO contato (nome, email, idade, dataN, parente) VALUES(:nome, :email, :idade, :dataN, :parente)";
+            $query = "INSERT INTO contato (nome, email, idade, dataN, parente, localC, cidade, passatempo) VALUES(:nome, :email, :idade, :dataN, :parente, :localC, :cidade, :passatempo)";
         }
 
         $stmt = $conexao->prepare($query);
@@ -51,6 +53,8 @@ if($nome != "" && $email != "" && $idade != ""){
         $stmt->bindValue(":dataN",$dataN);
         $stmt->bindValue(":parente",$parente);
         $stmt->bindValue(":localC",$localC);
+        $stmt->bindValue(":cidade",$cidade);
+        $stmt->bindValue(":passatempo",$passatempo);
         if($id > 0){
             $stmt->bindValue(":id",$id);
         }

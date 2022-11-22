@@ -94,9 +94,14 @@ if ($acao == "editar"){
                     <label for="select">Origem do Contato:</label>
                 </div>
                     <br>
-                <div>
-                    <label for="imagem" class="form-label">Imagem de Perfil</label>
-                    <input class="form-control" name="img" type="file" id="formFile">
+                <div class="form-floating">
+                    <input type="text" id="cidade" name="cidade" class="form-control" placeholder="cidade" value=<?php if(isset($usuario)) echo $usuario["cidade"]?>>
+                    <label for="cidade">Cidade</label>
+                </div>
+                    <br>
+                <div class="form-floating"> 
+                    <input type="text" id="passatempo" name="passatempo" class="form-control" placeholder="passatempto" value=<?php if(isset($usuario)) echo $usuario["passatempo"]?>>
+                    <label for="passatempo">Passatempo</label>
                 </div>
                     <br>
                 <input type="submit" value="Salvar" name="acao">
